@@ -1,14 +1,24 @@
 const mazeLayout = [
-  "##########",
-  "#        #",
-  "# ###### #",
-  "# #    # #",
-  "# # ## # #",
-  "# # ## # #",
-  "# #    # #",
-  "# ###### #",
-  "#        #",
-  "########G#"
+  "####################",
+  "#     #       #    #",
+  "# ### # ##### # ## #",
+  "#   #     #   # #  #",
+  "### ##### # ### # ##",
+  "#     #   #     #  #",
+  "# ### # ##### ### ##",
+  "# #   #   #     #  #",
+  "# # ##### # ##### ##",
+  "# #     # #     #  #",
+  "##### # # ##### # ##",
+  "#   # # #     # #  #",
+  "# # ### ### ### ####",
+  "# #     #     #    #",
+  "# ####### ### #### #",
+  "#       #   #    # #",
+  "# ####### ##### ## #",
+  "#         #      # #",
+  "# ######### ######G#",
+  "####################"
 ];
 
 const maze = document.getElementById("maze");
@@ -16,20 +26,15 @@ let playerPos = { x: 1, y: 1 };
 
 function drawMaze() {
   maze.innerHTML = "";
-  for (let y = 0; y < 10; y++) {
-    for (let x = 0; x < 10; x++) {
+  for (let y = 0; y < mazeLayout.length; y++) {
+    for (let x = 0; x < mazeLayout[y].length; x++) {
       const cell = document.createElement("div");
       cell.classList.add("cell");
 
-      if (mazeLayout[y][x] === "#") {
-        cell.classList.add("wall");
-      } else if (mazeLayout[y][x] === "G") {
-        cell.classList.add("goal");
-      }
-
-      if (playerPos.x === x && playerPos.y === y) {
-        cell.classList.add("player");
-      }
+      const type = mazeLayout[y][x];
+      if (type === "#") cell.classList.add("wall");
+      if (type === "G") cell.classList.add("goal");
+      if (playerPos.x === x && playerPos.y === y) cell.classList.add("player");
 
       maze.appendChild(cell);
     }
@@ -39,9 +44,9 @@ function drawMaze() {
 function movePlayer(dx, dy) {
   const newX = playerPos.x + dx;
   const newY = playerPos.y + dy;
+  const cell = mazeLayout[newY]?.[newX];
 
-  const cell = mazeLayout[newY][newX];
-  if (cell !== "#") {
+  if (cell && cell !== "#") {
     playerPos.x = newX;
     playerPos.y = newY;
 
@@ -52,7 +57,7 @@ function movePlayer(dx, dy) {
   drawMaze();
 }
 
-document.addEventListener("keydown", e => {
+document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "ArrowUp": movePlayer(0, -1); break;
     case "ArrowDown": movePlayer(0, 1); break;
@@ -62,4 +67,5 @@ document.addEventListener("keydown", e => {
 });
 
 drawMaze();
+
 
