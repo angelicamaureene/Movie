@@ -15,14 +15,14 @@ h1 {
 
 #maze {
   display: grid;
-  grid-template-columns: repeat(10, 40px);
-  grid-template-rows: repeat(10, 40px);
-  gap: 2px;
+  grid-template-columns: repeat(20, 25px);
+  grid-template-rows: repeat(20, 25px);
+  gap: 1px;
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   background: white;
   border: 1px solid #ccc;
 }
@@ -33,10 +33,6 @@ h1 {
 
 .player {
   background: blue;
-}
-
-.goal {
-  background: green;
 }
 
 .goal {
