@@ -14,11 +14,14 @@ h1 {
 }
 
 #maze {
-  display: grid;
-  grid-template-columns: repeat(10, 40px);
-  grid-template-rows: repeat(10, 40px);
-  gap: 2px;
+  grid-template-columns: repeat(15, 30px);
+  grid-template-rows: repeat(15, 30px);
 }
+.cell {
+  width: 30px;
+  height: 30px;
+}
+
 
 .cell {
   width: 40px;
