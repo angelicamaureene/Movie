@@ -23,18 +23,18 @@ h1 {
 .cell {
   width: 25px;
   height: 25px;
-  background: yellow;
+  background: fffaf0;
   border: 1px solid #ccc;
 }
 
 .wall {
-  background: pink;
+  background: ffffc5;
 }
 
 .player {
-  background: blue;
+  background: 89cff0;
 }
 
 .goal {
-  background: green;
+  background: ffd1dc;
 }
